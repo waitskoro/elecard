@@ -4,7 +4,7 @@
 #include <cstring>
 #include <stdexcept>
 
-RgbImage read_bmp(const std::string& filename) 
+Frame read_bmp(const std::string& filename) 
 {
     std::ifstream file(filename, std::ios::binary);
     if (!file.is_open()) {
@@ -39,7 +39,7 @@ RgbImage read_bmp(const std::string& filename)
     std::vector<uint8_t> buffer(abs_height * row_stride);
     file.read(reinterpret_cast<char*>(buffer.data()), buffer.size());
 
-    RgbImage result;
+    Frame result;
     result.width = width;
     result.height = abs_height;
     result.data.resize(width * abs_height * 3);

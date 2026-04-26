@@ -4,11 +4,7 @@
 #include <string>
 #include <cstdint>
 
-struct RgbImage {
-    uint32_t width;
-    uint32_t height;
-    std::vector<uint8_t> data;
-};
+#include "common.hpp"
 
 #pragma pack(push, 1)
 
@@ -35,6 +31,6 @@ struct BmpInfoHeader {
 
 #pragma pack(pop)
 
-RgbImage read_bmp(const std::string& filename);
+Frame read_bmp(const std::string& filename);
 
 bool validate_bmp_header(const uint8_t* header);

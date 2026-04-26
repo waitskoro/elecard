@@ -1,17 +1,14 @@
 #pragma once
 
-#include <cstdint>
 #include <string>
 #include <vector>
+#include <cstdint>
+
 #include "bmp_reader.hpp"
 
-struct YuvFrame {
-    uint32_t width;
-    uint32_t height;
-    std::vector<uint8_t> data;
-};
+Frame prepare_overlay(const Frame& overlay);
 
-void overlay_image_on_yuv(YuvFrame& frame, const RgbImage& overlay, 
+void overlay_image_on_yuv(Frame& frame, const Frame& overlay, 
                           uint32_t pos_x, uint32_t pos_y);
 
 void process_video(const std::string& input_yuv, const std::string& bmp_file,
